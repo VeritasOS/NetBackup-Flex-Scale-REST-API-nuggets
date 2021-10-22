@@ -1,0 +1,24 @@
+
+# These parameters are required for login
+export APPLIANCE_ADMIN_USERNAME="xxxx"
+export APPLIANCE_ADMIN_PASSWORD="xxxx"
+export API_GATEWAY_IP="aaa.bbb.ccc.ddd"
+
+# These parameters are required for setting compliance mode
+# Expected Values for LOACKDOWN_MODE: normal/compliance/enterprise
+export LOCKDOWN_MODE=""
+
+# Retention values must be of intger type
+export MINIMUM_RETENTION="xxxx"
+export MAXIMUM_RETENTION="xxxx"
+
+# These parameters are required for adding a node in existing cluster
+export MEDIA_SERVER_FQDN="abc.com"
+export MEDIA_SERVER_IP="aaa.bbb.ccc.ddd"
+export NETWORK="aaa.bbb.ccc.ddd"
+export NETMASK="aaa.bbb.ccc.ddd"
+export STORAGE_SERVER_FQDN="abc.com"
+export STORAGE_SERVER_IP="aaa.bbb.ccc.ddd"
+export NODE_NAME="xxxx"
+export MANAGEMENT_FQDN="abc.com"
+export MANAGEMENT_IP="aaa.bbb.ccc.ddd"
