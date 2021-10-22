@@ -2,13 +2,14 @@
 This repo will provide sample scripts to execute REST APIs on NetBackupFlexScale cluster
 
 * [Disclaimer](#Disc)
+* [Introduction](#intro)
+
 
 <a name="Disc"></a>
 ## Disclaimer:
 
 > These samples are only meant to be used as a reference. Please do not use these in production.
 
-* [Introduction](#intro)
 
 <a name="intro"></a>
 
