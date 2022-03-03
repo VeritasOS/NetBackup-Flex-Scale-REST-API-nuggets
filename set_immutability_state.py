@@ -7,8 +7,9 @@
 	LOCKDOWN_MODE=""
 	    Expected Values: normal/compliance/enterprise
 	Optional:
-	    MINIMUM_RETENTION=""   Default value is 0
-	    MAXIMUM_RETENTION=""   Default value is 0
+            Following values are required in integer format
+	    MINIMUM_RETENTION=   Default value is 0
+	    MAXIMUM_RETENTION=   Default value is 0
 """
 
 import logging
@@ -40,11 +41,11 @@ def main():
 
 	# Description: Set immutability state/lockdown mode
 	data = {"lockdownMode": "{}".format(lockdownMode),
-			"minimumRetention": "{}".format(min_retention),
-			"maximumRetention": "{}".format(max_retention)}
+			"minimumRetention": int(min_retention),
+			"maximumRetention": int(max_retention)}	
 	utils.run_api(api_gateway,
 				"/api/appliance/v1.0/security/lockdown-mode",
-				username, passwd, req_type='post', data=data)
+				username, passwd, req_type='patch', data=data)
 
 if __name__ == "__main__":
     main()

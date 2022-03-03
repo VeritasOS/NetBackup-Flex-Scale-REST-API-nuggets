@@ -9,8 +9,8 @@ export API_GATEWAY_IP="aaa.bbb.ccc.ddd"
 export LOCKDOWN_MODE=""
 
 # Retention values must be of intger type
-export MINIMUM_RETENTION="xxxx"
-export MAXIMUM_RETENTION="xxxx"
+export MINIMUM_RETENTION=xxxx
+export MAXIMUM_RETENTION=xxxx
 
 # These parameters are required for adding a node in existing cluster
 export MEDIA_SERVER_FQDN="abc.com"
