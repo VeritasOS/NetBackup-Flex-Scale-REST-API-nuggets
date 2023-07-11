@@ -4,6 +4,7 @@
 	APPLIANCE_ADMIN_USERNAME=""
 	APPLIANCE_ADMIN_PASSWORD=""
 	API_GATEWAY_IP=""
+    
 """
 
 import logging
