@@ -85,19 +85,17 @@ def run_api(provider, url, username, password,
             data = json.dumps(data)
         response = session.patch(url, headers=headers,
                                   data=data)
+        response = wait_for_task_completion(provider, session, headers, response)
 
     if response.status_code not in (200, 202):
         logger.error("Request failed with {}".format(response.json()))
         sys.exit(1)
 
-    if req_type in ['post', 'patch']:
-        response = wait_for_task_completion(provider, session, headers, response)
-
     logger.info("REST EndPoint: {}".format(url))
     logger.info("Payload: {}".format(data))
     logger.info("Request Type: {}".format(req_type))
     json_obj = json.loads(response.text)
-    logger.info("Request Response: {}".format(json.dumps(json_obj)))
+    logger.info("Request Response: {}".format(json.dumps(json_obj, indent=4)))
 
     return response.json()
 

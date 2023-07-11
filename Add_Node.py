@@ -13,6 +13,12 @@
     NODE_NAME=""
     MANAGEMENT_FQDN=""
     MANAGEMENT_IP=""
+    INTERFACE_NAME=""
+    IS_BONDED=""
+
+    if Data n/w is bonded,
+    INTERFACE_NAME="bond0"
+    IS_BONDED="yes"
 """
 
 import logging
@@ -47,16 +53,21 @@ def main():
     new_node_name = os.environ.get("NODE_NAME", None)
     management_fqdn = os.environ.get("MANAGEMENT_FQDN", None)
     management_ip = os.environ.get("MANAGEMENT_IP", None)
+    interface_name = os.environ.get("INTERFACE_NAME", None)
+    if os.environ.get("IS_BONDED", None) == 'yes':
+        is_bonded = True
+    else:
+        is_bonded = False
 
     # Input parameter validation
-    if (not username or not passwd or not api_gateway or 
-        not media_fqdn or not media_ip or not network or 
+    if (not username or not passwd or not api_gateway or
+        not media_fqdn or not media_ip or not network or
         not netmask or not storage_fqdn or not storage_ip
-        or not new_node_name or not management_fqdn or 
-        not management_ip):
+        or not new_node_name or not management_fqdn or
+        not management_ip or not interface_name):
         logger.error("Missing required environment variable/s,"
          "please check doc string for required variables")
-        return 1 
+        return 1
 
     # Description: Discover new nodes
     response = utils.run_api(api_gateway,
@@ -92,19 +103,19 @@ def main():
                             "index": 0,
                             "prefix": "",
                             "ipAddress": media_ip,
-                            "isBonded": False,
+                            "isBonded": is_bonded,
                             "network": network,
                             "subnetMask": netmask
                         }
                     ],
                     "storageServerList": [
                         {
-                            "interfaceName": "eth5",
+                            "interfaceName": interface_name,
                             "hostName": storage_fqdn,
                             "index": 0,
                             "prefix": "",
                             "ipAddress": storage_ip,
-                            "isBonded": False,
+                            "isBonded": is_bonded,
                             "network": network,
                             "subnetMask": netmask
                         }
@@ -129,7 +140,6 @@ def main():
             }
         ]
     }
-
     # Add new node
     utils.run_api(api_gateway,
                 "/api/appliance/v1.0/storage/nodes",

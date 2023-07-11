@@ -21,9 +21,11 @@ This repo will provide sample scripts to execute REST APIs on NetBackupFlexScale
 
 - Python modules needed: urllib3, requests
 
+- source env_config before running a script. Example : . env_config
+
     TestDriver script usage:
 
-    >python <script_name>
+    >python3 <script_name>
     - Each script requires environment variables for execution.
     - Each script contains doc string at the begining of file, which mentions required enviroment variables for the script execution.
     - Please refer env_config file for sample inputs

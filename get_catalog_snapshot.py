@@ -30,7 +30,7 @@ def main():
 					"please check doc string for required variables")
 		return 1
 
-	# Description: Clear and Fix any faults for services
+	# Description: List all the checkpoints
 	utils.run_api(api_gateway, "/api/appliance/v1.0/netbackup/checkpoints",
 				username, passwd, req_type='get')
 

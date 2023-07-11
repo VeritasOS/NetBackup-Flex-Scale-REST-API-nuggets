@@ -23,7 +23,7 @@ def main():
     username = os.environ["APPLIANCE_ADMIN_USERNAME"]
     passwd = os.environ["APPLIANCE_ADMIN_PASSWORD"]
     api_gateway = os.environ["API_GATEWAY_IP"]
-    
+
     # Input parameter validation
     if(not username or not passwd or not api_gateway):
         logger.error("Missing required environment variable/s,"
@@ -38,10 +38,16 @@ def main():
     # Get latest snapshot
     latest_snapshot = response["data"][0]["links"]["self"]["href"].split("/")[-1]
 
-    # Restore latest catalog snapshot
+    # Validate latest catalog snapshot
     utils.run_api(api_gateway,
                 "/api/appliance/v1.0/netbackup/checkpoints/restore"
                 "-catalog/{}".format(latest_snapshot), username,
+                passwd,  req_type="post")
+
+    # Restore latest catalog snapshot
+    utils.run_api(api_gateway,
+                "/api/appliance/v1.0/netbackup/checkpoints/"
+                "sync-catalog", username,
                 passwd,  req_type="post")
 
 if __name__ == "__main__":
