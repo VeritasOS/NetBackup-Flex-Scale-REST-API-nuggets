@@ -3,6 +3,11 @@
 export APPLIANCE_ADMIN_USERNAME="xxxx"
 export APPLIANCE_ADMIN_PASSWORD="xxxx"
 export API_GATEWAY_IP="aaa.bbb.ccc.ddd"
+# If DR is configured
+export DR_SITE_ADMIN_USERNAME="xxxx"
+export DR_SITE_ADMIN_PASSWORD="xxxx"
+export DR_SITE_API_GATEWAY_IP="aaa.bbb.ccc.ddd"
+export DR="yes/no"
 
 # These parameters are required for setting compliance mode
 # Expected Values for LOACKDOWN_MODE: normal/compliance/enterprise
@@ -22,3 +27,5 @@ export STORAGE_SERVER_IP="aaa.bbb.ccc.ddd"
 export NODE_NAME="xxxx"
 export MANAGEMENT_FQDN="abc.com"
 export MANAGEMENT_IP="aaa.bbb.ccc.ddd"
+export INTERFACE_NAME="eth5/bond0"
+export IS_BONDED="yes/no"
